@@ -1,0 +1,60 @@
+---
+- # ====== List of Values: ROLES ===============================
+  id: 11044098151424153
+  identification: 
+    name: ROLES
+
+  subscription: 
+    version-number: 29949523
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Customer =====================================
+    id: 11044342140424154
+    entry: 
+      sequence: 1
+      display: Customer
+      return: Customer
+
+  - # ====== Entry: Teller =======================================
+    id: 11044744686424157
+    entry: 
+      sequence: 2
+      display: Teller
+      return: Teller
+
+  - # ====== Entry: Admin ========================================
+    id: 11045152401424157
+    entry: 
+      sequence: 3
+      display: Admin
+      return: Admin
+
+- # ====== List of Values: IS ACTIVE ===========================
+  id: 11045466040427789
+  identification: 
+    name: IS ACTIVE
+
+  subscription: 
+    version-number: 30625633
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: YES ==========================================
+    id: 11045754699427789
+    entry: 
+      sequence: 1
+      display: YES
+      return: YES
+
+  - # ====== Entry: NO ===========================================
+    id: 11046170892427789
+    entry: 
+      sequence: 2
+      display: NO
+      return: NO
+

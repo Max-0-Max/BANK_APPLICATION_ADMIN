@@ -1,0 +1,75 @@
+---
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 11006989042220971
+  identification: 
+    name: Oracle APEX Accounts
+
+  subscription: 
+    version-number: 29929696
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: Custom Authentication ===============
+  id: 11047299865437814
+  identification: 
+    name: Custom Authentication
+
+  subscription: 
+    version-number: 29982432
+
+  settings: 
+    type: Custom
+    authentication-function-name: authenticate_user
+    enable-legacy-authentication-attributes: false
+
+  source: 
+    pl/sql-code: |
+      function authenticate_user (
+         p_username varchar2,
+         p_password varchar2
+      ) return boolean is
+         l_stored_hash varchar2(255);
+         l_input_hash  varchar2(255);
+      begin
+         select password_hash
+           into l_stored_hash
+           from maxwell_custom_users
+          where upper(username) = upper(p_username);
+      
+         -- Generate hash for input password using SHA-256 (change as needed)
+         l_input_hash := rawtohex(
+            dbms_crypto.hash(utl_raw.cast_to_raw(p_password), dbms_crypto.hash_sh256)
+         );
+      
+         if l_stored_hash = l_input_hash then
+            return true;
+         end if;
+      
+         return false;
+      
+      exception
+         when no_data_found then
+            return false;
+      end authenticate_user;
+      
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    post-authentication-procedure-name: maxwell_get_user_role
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+

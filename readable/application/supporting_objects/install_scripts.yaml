@@ -1,0 +1,9 @@
+---
+- # ====== Install Script: Bank Admin ==========================
+  id: 12502481649743270
+  identification: 
+    name: Bank Admin
+
+  execution: 
+    sequence: 10
+

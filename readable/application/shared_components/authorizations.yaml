@@ -1,0 +1,40 @@
+---
+- # ====== Authorization: Administration Rights ================
+  id: 11012435786221090
+  identification: 
+    name: Administration Rights
+
+  subscription: 
+    version-number: 29929844
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: return true;
+
+  server-cache: 
+    evaluation-point: Once per Page View
+
+  error: 
+    error-message: Insufficient privileges, user is not an Administrator
+
+- # ====== Authorization: Is Admin =============================
+  id: 11048010569464418
+  identification: 
+    name: Is Admin
+
+  subscription: 
+    version-number: 29975773
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN :APP_USER_ROLE = 'Admin';
+      
+
+  server-cache: 
+    evaluation-point: Once per Session
+

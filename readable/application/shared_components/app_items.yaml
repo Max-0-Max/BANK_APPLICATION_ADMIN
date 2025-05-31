@@ -1,0 +1,14 @@
+---
+- # ====== Application Item: APP_USER_ROLE =====================
+  id: 11069676864796921
+  identification: 
+    name: APP_USER_ROLE
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 29974820
+
